@@ -15,11 +15,11 @@ Node::Node( const NODE_ID& id )
 Node::~Node()
 {
 	//Empty out found paths
-
-	for (int i = 0; i < foundPaths.size(); i++)
+	for (std::map<NODE_ID, Path*>::iterator nodeForDeletion = foundPaths.begin(); nodeForDeletion != foundPaths.end(); ++nodeForDeletion)
 	{
-		delete foundPaths[i];
+		delete nodeForDeletion->second;
 	}
+	foundPaths.clear();
 }
 
 Path* Node::addFoundPath(NODE_ID toNode, Path * path)

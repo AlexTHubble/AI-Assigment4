@@ -14,7 +14,7 @@ class Dijsktra :public GridPathfinder
 {
 public:
 	Dijsktra(Graph* pGraph, bool Astar);
-	~Dijsktra();
+	virtual ~Dijsktra();
 
 	Path* findPath(Node* pFrom, Node* pTo);
 
