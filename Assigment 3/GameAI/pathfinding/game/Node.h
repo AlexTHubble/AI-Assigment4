@@ -24,7 +24,7 @@ public:
 	//Connection* getConnection() { return mConnection; };
 	void setPreviousNode(Node* newNode) { mPreviousNode = newNode; };
 	Node* getPreviousNode() { return mPreviousNode; };
-	void addFoundPath(NODE_ID toNode, Path* path);
+	Path* addFoundPath(NODE_ID toNode, Path* path);
 	Path* getPreviousPath(NODE_ID toNode);
 
 	const NODE_ID& getId() const {return mId;};

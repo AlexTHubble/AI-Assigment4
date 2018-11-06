@@ -14,12 +14,32 @@ Node::Node( const NODE_ID& id )
 
 Node::~Node()
 {
-	//delete mConnection;
+	//Empty out found paths
+
+	for (int i = 0; i < foundPaths.size(); i++)
+	{
+		delete foundPaths[i];
+	}
 }
 
-void Node::addFoundPath(NODE_ID toNode, Path * path)
+Path* Node::addFoundPath(NODE_ID toNode, Path * path)
 {
-	foundPaths.insert(pair<NODE_ID, Path*>(toNode, path));
+
+	Path * newPath = new Path;
+
+	//Copyies the pointer contents over to the new path
+	
+	for(int i = 0; i < path->getNumNodes(); i++)
+	{
+		Node* tempNode = path->peekNode(i);
+		newPath->addNode(tempNode);
+	}
+
+	foundPaths.insert(pair<NODE_ID, Path*>(toNode, newPath));
+
+	return newPath;
+
+
 }
 
 Path * Node::getPreviousPath(NODE_ID toNode)
@@ -27,8 +47,16 @@ Path * Node::getPreviousPath(NODE_ID toNode)
 
 	if (foundPaths.find(toNode) != foundPaths.end())
 	{
-		Path* returnPath = foundPaths.find(toNode)->second;
-		return returnPath;
+		if (foundPaths.find(toNode)->second->getNumNodes() > 0)
+		{
+			Path* returnPath = foundPaths.find(toNode)->second;
+			return returnPath;
+		}
+		else
+		{
+			return nullptr;
+		}
+
 	}
 	else
 	{
@@ -36,4 +64,4 @@ Path * Node::getPreviousPath(NODE_ID toNode)
 	}
 
 	
-}
+ }
