@@ -1,4 +1,5 @@
-#pragma once
+#ifndef NODE_H
+#define NODE_H
 
 #include <map>
 #include <Trackable.h>
@@ -10,10 +11,10 @@ const int BAD_NODE_ID = -1;
 
 using namespace std;
 
-class Node:public Trackable
+class Node :public Trackable
 {
 public:
-	Node( const NODE_ID& id );
+	Node(const NODE_ID& id);
 	Node();
 	virtual ~Node();
 
@@ -27,7 +28,7 @@ public:
 	Path* addFoundPath(NODE_ID toNode, Path* path);
 	Path* getPreviousPath(NODE_ID toNode);
 
-	const NODE_ID& getId() const {return mId;};
+	const NODE_ID& getId() const { return mId; };
 
 private:
 	const NODE_ID mId;
@@ -37,3 +38,6 @@ private:
 	//map<int, Path*> foundPaths;
 	map<NODE_ID, Path*> foundPaths;
 };
+
+
+#endif // !NODE_H

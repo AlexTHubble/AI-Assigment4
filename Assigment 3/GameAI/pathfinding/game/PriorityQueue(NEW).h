@@ -1,6 +1,10 @@
+#ifndef PRIORITY_QUEUE_H
+#define PRIORITY_QUEUE_H
+
 //NOTE: This is not my code, taken from user Captain Obvlious on stack overflow
 //Author: Captain Oblivious
 //Source: https://stackoverflow.com/questions/16749723/how-i-can-find-value-in-priority-queue
+
 
 #include <queue>
 template<
@@ -33,3 +37,5 @@ public:
 		return last;
 	}
 };
+
+#endif // !PRIORITY_QUEUE_H

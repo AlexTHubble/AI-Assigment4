@@ -1,7 +1,8 @@
-#pragma once
+#ifndef INPUT_SYSTEM_H
+#define INPUT_SYSTEM_H
+
 #include <sstream>
 #include <SDL.h>
-
 
 #include "GameMessageManager.h"
 #include "GraphicsBufferManager.h"
@@ -21,10 +22,12 @@ public:
 	void update();
 
 	//void setFlockSteering(Flock *theSteering) { mpFlockSteering = theSteering; };
-	
+
 
 private:
 	GameMessageManager * mpMessageManager;
 	SpriteManager * mpSpriteManager;
 	IDType mAiSpriteID;
 };
+
+#endif // !INPUT_SYSTEM_H
