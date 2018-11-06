@@ -15,7 +15,7 @@ class Node:public Trackable
 public:
 	Node( const NODE_ID& id );
 	Node();
-	~Node();
+	virtual ~Node();
 
 
 	int getCost() { return mCost; };

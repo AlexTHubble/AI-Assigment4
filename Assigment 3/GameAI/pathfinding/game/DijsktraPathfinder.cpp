@@ -160,6 +160,7 @@ Path* Dijsktra::findPath(Node* pFrom, Node* pTo)
 			return NULL;
 		}
 
+
 		//Finds the shortest path through the previous node pointers
 		Node* temp = pTo;
 		bool endOfLoop = false;
@@ -169,7 +170,7 @@ Path* Dijsktra::findPath(Node* pFrom, Node* pTo)
 			temp = temp->getPreviousNode();
 		}
 
-		
+		pFrom->addFoundPath(pTo->getId(), shortestPath);
 	} //END OF PREVIOUS LOOP IF
 	
 
@@ -177,7 +178,7 @@ Path* Dijsktra::findPath(Node* pFrom, Node* pTo)
 	gpPerformanceTracker->stopTracking("path");
 	mTimeElapsed = gpPerformanceTracker->getElapsedTime("path");
 
-	pFrom->addFoundPath(pTo->getId(), shortestPath);
+	
 
 	//Visualizes the shortest path
 #ifdef VISUALIZE_PATH
@@ -186,7 +187,7 @@ Path* Dijsktra::findPath(Node* pFrom, Node* pTo)
 
 	//Clean up
 	delete closedNodes;
-	delete tempPath;
+	//delete tempPath;
 	cout << "Ended path finding Dijsktra..." << endl;
 
 	
