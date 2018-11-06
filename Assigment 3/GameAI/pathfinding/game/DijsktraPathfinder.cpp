@@ -70,10 +70,7 @@ Path* Dijsktra::findPath(Node* pFrom, Node* pTo)
 		previousPathFound = true;
 		shortestPath = tempPath;
 	}
-	else
-	{
-		delete tempPath;
-	}
+
 
 	//Prosses through each open node
 
@@ -189,6 +186,7 @@ Path* Dijsktra::findPath(Node* pFrom, Node* pTo)
 
 	//Clean up
 	delete closedNodes;
+	delete tempPath;
 	cout << "Ended path finding Dijsktra..." << endl;
 
 	
