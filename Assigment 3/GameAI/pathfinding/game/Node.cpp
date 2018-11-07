@@ -18,6 +18,7 @@ Node::~Node()
 	for (std::map<NODE_ID, Path*>::iterator nodeForDeletion = foundPaths.begin(); nodeForDeletion != foundPaths.end(); ++nodeForDeletion)
 	{
 		delete nodeForDeletion->second;
+		nodeForDeletion->second = nullptr;
 	}
 	foundPaths.clear();
 }

@@ -79,8 +79,6 @@ Path* Dijsktra::findPath(Node* pFrom, Node* pTo)
 		while (openNodes.size() > 0)
 		{
 
-
-
 			//get current node from front of list
 			currentNode = openNodes.top();
 
@@ -177,8 +175,6 @@ Path* Dijsktra::findPath(Node* pFrom, Node* pTo)
 	//Shut's down preformance tracker
 	gpPerformanceTracker->stopTracking("path");
 	mTimeElapsed = gpPerformanceTracker->getElapsedTime("path");
-
-	
 
 	//Visualizes the shortest path
 #ifdef VISUALIZE_PATH
