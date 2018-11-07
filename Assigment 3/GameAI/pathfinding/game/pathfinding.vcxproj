@@ -56,7 +56,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\..\DeanLib\include;..\..\..\external libs\SDL2\SDL\include;..\common;componant steering SDL\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\DeanLib\include;..\..\..\external libs\SDL2\SDL\include;..\common</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -92,7 +92,6 @@
     <ClInclude Include="..\common\Sprite.h" />
     <ClInclude Include="..\common\SpriteManager.h" />
     <ClInclude Include="Compare.h" />
-    <ClInclude Include="component steering SDL\PathFindingSeek.h" />
     <ClInclude Include="Connection.h" />
     <ClInclude Include="DebugContent.h" />
     <ClInclude Include="DebugDisplay.h" />
