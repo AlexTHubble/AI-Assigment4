@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GAME_MESSAGE_H
+#define GAME_MESSAGE_H
 
 #include <Trackable.h>
 
@@ -9,12 +10,12 @@ enum MessageType
 	PATH_TO_MESSAGE = 1
 };
 
-class GameMessage: public Trackable
+class GameMessage : public Trackable
 {
 public:
 	friend class GameMessageManager;
 
-	GameMessage( MessageType type  );
+	GameMessage(MessageType type);
 	~GameMessage();
 
 	double getSubmittedTime() const { return mSubmittedTime; };
@@ -26,7 +27,10 @@ protected:
 	double mScheduledTime;
 
 private:
-	virtual void process() = 0; 
+	virtual void process() = 0;
 };
+
+#endif // !GAME_MESSAGE_H
+
 
 

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DIJSKTRA_PATHFINDER_H
+#define DIJSKTRA_PATHFINDER_H
 
 #include "GridPathfinder.h"
 #include <vector>
@@ -22,4 +23,6 @@ private:
 	bool mApplyAStar = true;
 
 };
+
+#endif // !DIJSKTRA_PATHFINDER_H
 
