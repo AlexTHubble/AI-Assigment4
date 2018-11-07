@@ -176,10 +176,30 @@ Path* Dijsktra::findPath(Node* pFrom, Node* pTo)
 	gpPerformanceTracker->stopTracking("path");
 	mTimeElapsed = gpPerformanceTracker->getElapsedTime("path");
 
-	//Visualizes the shortest path
+	//This if is used to make sure that mpPath is never a pointer in the Node's internal list. 
+	//Without it there would be memory crashes
+	if (previousPathFound)
+	{
+		Path* newPath = new Path;
+		for (int i = 0; i < shortestPath->getNumNodes(); i++)
+		{
+			Node* tempNode = shortestPath->peekNode(i);
+			newPath->addNode(tempNode);
+		}
+
 #ifdef VISUALIZE_PATH
-	mpPath = shortestPath;
+		mpPath = newPath;
 #endif
+	}
+	else
+	{
+#ifdef VISUALIZE_PATH
+		mpPath = shortestPath;
+#endif
+	}
+
+	//Visualizes the shortest path
+
 
 	//Clean up
 	delete closedNodes;
