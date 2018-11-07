@@ -120,6 +120,9 @@
     <ClInclude Include="InputSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="component steering SDL\PathFindingSeek.h">
+      <Filter>Header Files\pathfinding</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common\Game.cpp">

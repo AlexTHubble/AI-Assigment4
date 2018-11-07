@@ -2,7 +2,6 @@
 #define PATH_TO_MESSAGE_H
 
 #include "GameMessage.h"
-
 #include "Vector2D.h"
 
 class PathToMessage : public GameMessage
