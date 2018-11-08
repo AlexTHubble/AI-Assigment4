@@ -3,6 +3,7 @@
 #include "Node.h"
 #include "Grid.h"
 #include "Game.h"
+#include "Vector2D.h"
 #include <vector>
 
 GridGraph::GridGraph( Grid* pGrid )
@@ -51,9 +52,25 @@ void GridGraph::init()
 				//check for blocking terrain
 				if( mpGrid->getValueAtIndex(adjacencies[adjIndex]) != BLOCKING_VALUE )
 				{
+					Connection* pConnection;
 					Node* pToNode = mNodes[ adjacencies[adjIndex] ];//find to node
 
-					Connection* pConnection = new Connection( pFromNode, pToNode, 1.0f );//create a connection
+					//Get corner pos of from node and to node
+					Vector2D fromNodePosition = mpGrid->getULCornerOfSquare(pFromNode->getId());
+					Vector2D toNodePosition = mpGrid->getULCornerOfSquare(pToNode->getId());
+					//Check if adjacent to pToNode by seeing if they line up in either the x or y position
+					if (fromNodePosition.getX() == toNodePosition.getX() || fromNodePosition.getY() == toNodePosition.getY())
+					{
+						//If they do then they are not adjacent
+						//Set connection cost to 1
+						pConnection = new Connection(pFromNode, pToNode, 1.0f); //create a connection
+					}
+					else
+					{
+						//If they don't then they must be adjacent
+						//Set connection cost to sqrt 2
+						pConnection = new Connection(pFromNode, pToNode, sqrtf(2.0f)); //create a connection
+					}
 
 					//add connection to connection vectors
 					mConnections.push_back( pConnection );
