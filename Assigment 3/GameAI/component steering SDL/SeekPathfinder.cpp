@@ -64,9 +64,3 @@ Steering* SeekPathfinder::getSteering()
 	return this;
 }
 
-//void SeekPathfinder::setNewTarget(const Vector2D& targetLoc, const UnitID& targetID = INVALID_UNIT_ID)
-//{
-//	setTargetID(targetID);
-//	setTargetLoc(targetLoc);
-//	mArrived = false;
-//}

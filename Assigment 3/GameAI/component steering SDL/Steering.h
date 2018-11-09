@@ -54,7 +54,7 @@ protected:
 	UnitID mOwnerID;
 	PhysicsData mData;
 	float mTargetFacing;
-
+	bool mArrivedAtTarget = false;
 
 
 };
