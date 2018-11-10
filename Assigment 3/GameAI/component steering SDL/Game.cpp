@@ -18,6 +18,17 @@
 #include "ComponentManager.h"
 #include "UnitManager.h"
 #include "InputSystem.h"
+//#include "Grid.h"
+#include "GridGraph.h"
+#include "Connection.h"
+#include "Path.h"
+#include "DepthFirstPathfinder.h"
+#include "Pathfinder.h"
+#include "GridPathfinder.h"
+//#include "GridVisualizer.h"
+#include "DebugDisplay.h"
+#include "PathfindingDebugContent.h"
+#include "DijsktraPathfinder.h"
 
 
 Game* gpGame = NULL;
@@ -50,6 +61,7 @@ bool Game::init()
 {
 	//srand(static_cast<unsigned>(time(NULL)));
 
+
 	mShouldExit = false;
 
 	//create Timers
@@ -71,6 +83,18 @@ bool Game::init()
 
 	mpMessageManager = new GameMessageManager();
 	
+	//create and load the Grid, GridBuffer, and GridRenderer
+	//mpGrid = new Grid(mpGraphicsSystem->getWidth(), mpGraphicsSystem->getHeight(), GRID_SQUARE_SIZE);
+	//mpGridVisualizer = new GridVisualizer(mpGrid);
+	//std::ifstream theStream(gFileName);
+	//mpGrid->load(theStream);
+
+	//create the GridGraph for pathfinding
+	//mpGridGraph = new GridGraph(mpGrid);
+	//init the nodes and connections
+	//mpGridGraph->init();
+
+	//mpPathfinder = new DepthFirstPathfinder(mpGridGraph);
 
 	mpComponentManager = new ComponentManager(MAX_UNITS);
 	mpUnitManager = new UnitManager(MAX_UNITS);
@@ -112,21 +136,12 @@ bool Game::init()
 		mpSpriteManager->createAndManageSprite(TARGET_SPRITE_ID, pTargetBuffer, 0, 0, (float)pTargetBuffer->getWidth(), (float)pTargetBuffer->getHeight());
 	}
 
-	//setup units
-	//Unit* pUnit = mpUnitManager->createPlayerUnit(*pArrowSprite);
-	//pUnit->setShowTarget(true);
-	//pUnit->setSteering(Steering::WANDER, ZERO_VECTOR2D, INVALID_UNIT_ID);
-	//pUnit->getPositionComponent()->setPosition(Vector2D(300, 300));
+	//debug display
+	//PathfindingDebugContent* pContent = new PathfindingDebugContent(mpPathfinder);
+	//mpDebugDisplay = new DebugDisplay(Vector2D(0, 12), pContent);
 
-	//create 2 enemies
-	//pUnit = mpUnitManager->createUnit(*pEnemyArrow, true, PositionData(Vector2D((float)gpGame->getGraphicsSystem()->getWidth()-1, 0.0f), 0.0f));
-	//pUnit->setShowTarget(true);
-	//pUnit->setSteering(Steering::SEEK, ZERO_VECTOR2D, PLAYER_UNIT_ID);
 
-	//pUnit = mpUnitManager->createUnit(*pEnemyArrow, true, PositionData(Vector2D(0.0f, (float)gpGame->getGraphicsSystem()->getHeight()-1), 0.0f));
-	//pUnit->setShowTarget(false);
-	//pUnit->setSteering(Steering::FLEE, ZERO_VECTOR2D, PLAYER_UNIT_ID);
-
+	mpMasterTimer->start();
 
 	return true;
 }

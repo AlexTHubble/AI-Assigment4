@@ -12,6 +12,7 @@ public:
 	void setNewTarget(const Vector2D& targetLoc, const UnitID& targetID = INVALID_UNIT_ID);
 
 protected:
+	
 	float mArriveRadius = 0.5f;
 	bool mArrived = false;
 };

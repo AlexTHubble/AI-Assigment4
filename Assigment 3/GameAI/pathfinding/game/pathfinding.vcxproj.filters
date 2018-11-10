@@ -123,6 +123,12 @@
     <ClInclude Include="PathSmoothing.h">
       <Filter>Header Files\pathfinding</Filter>
     </ClInclude>
+    <ClInclude Include="..\Grid files\Grid.h">
+      <Filter>Common\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Grid files\GridVisualizer.h">
+      <Filter>Common\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common\Game.cpp">
@@ -132,9 +138,6 @@
       <Filter>Common\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\common\GraphicsSystem.cpp">
-      <Filter>Common\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\common\Grid.cpp">
       <Filter>Common\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\common\Sprite.cpp">
@@ -173,9 +176,6 @@
     <ClCompile Include="DepthFirstPathfinder.cpp">
       <Filter>Source Files\pathfinding</Filter>
     </ClCompile>
-    <ClCompile Include="..\common\GridVisualizer.cpp">
-      <Filter>Common\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="PathToMessage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -211,6 +211,12 @@
     </ClCompile>
     <ClCompile Include="PathSmoothing.cpp">
       <Filter>Source Files\pathfinding</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Grid files\GridVisualizer.cpp">
+      <Filter>Common\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Grid files\Grid.cpp">
+      <Filter>Common\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

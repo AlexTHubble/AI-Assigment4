@@ -17,6 +17,11 @@ class Timer;
 class ComponentManager;
 class UnitManager;
 class InputSystem;
+//class Grid;
+//class GridVisualizer;
+class GridGraph;
+class GridPathfinder;
+class DebugDisplay;
 
 const IDType BACKGROUND_SPRITE_ID = 0;
 const IDType PLAYER_ICON_SPRITE_ID = 1;
@@ -68,6 +73,13 @@ private:
 	GraphicsBufferID mPlayerIconBufferID = "player";
 	GraphicsBufferID mEnemyIconBufferID = "enemy";
 	GraphicsBufferID mTargetBufferID = "target";
+
+	//Grid* mpGrid;
+	//GridVisualizer* mpGridVisualizer;
+	//GridGraph* mpGridGraph;
+	//DebugDisplay* mpDebugDisplay;
+
+	//GridPathfinder* mpPathfinder;
 
 };
 
