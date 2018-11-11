@@ -2,9 +2,13 @@
 
 #include "UnitManager.h"
 #include "Unit.h"
-#include "Game.h"
+#include "..\game\GameApp.h"
 #include "ComponentManager.h"
 #include "GraphicsSystem.h"
+#include "..\game\Graph.h"
+#include "Grid.h"
+#include "..\game\GridGraph.h"
+
 
 UnitID UnitManager::msNextUnitID = PLAYER_UNIT_ID + 1;
 
@@ -66,20 +70,18 @@ Unit* UnitManager::createPlayerUnit(const Sprite& sprite, bool shouldWrap /*= tr
 
 Unit* UnitManager::createRandomUnit(const Sprite& sprite)
 {
+	Grid* grid = dynamic_cast<GameApp*>(gpGame)->getGrid();
+	GridGraph* gridGraph = dynamic_cast<GameApp*>(gpGame)->getGridGraph();
+	Vector2D randomNodeLocation = grid->getULCornerOfSquare(gridGraph->getRandomNonWallNode()->getId());
 
-	int posX = rand() % gpGame->getGraphicsSystem()->getWidth();
-	int posY = rand() % gpGame->getGraphicsSystem()->getHeight();
-	int velX = rand() % 50 - 25;
-	int velY = rand() % 40 - 20;
-	Unit* pUnit = createUnit(sprite, true, PositionData(Vector2D(posX, posY), 0));// , PhysicsData(Vector2D(velX, velY), Vector2D(0.1f, 0.1f), 0.1f, 0.05f));
+
+	Unit* pUnit = createUnit(sprite, true, PositionData(randomNodeLocation, 0));
 	if (pUnit != NULL)
 	{
-		//pUnit->setSteering(Steering::SEEK, Vector2D(rand() % gpGame->getGraphicsSystem()->getWidth(), rand() % gpGame->getGraphicsSystem()->getHeight()));
 		UnitID playerId = PLAYER_UNIT_ID;
 		pUnit->setShowTarget(true);
-		pUnit->setSteering(Steering::FLOCK, NULL, playerId);
-		//pUnit->getSteeringComponent()->getSteeringPart()->setUnitManager(this); //Since flocking this will set up the unit manager
-		
+		pUnit->setSteering(Steering::PATHSEEK, NULL, playerId);
+	
 	}
 	return pUnit;
 }

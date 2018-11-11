@@ -30,11 +30,14 @@ public:
 	int getGridHeight() const { return mGridHeight; };
 	int getSquareSize() const { return mSquareSize; };
 
+
 	//get adjacent grid square indices
 	std::vector<int> getAdjacentIndices( int theSquareIndex ) const;
 
 	void save( std::ofstream& file );
 	void load( std::ifstream& file );
+
+	Node* getRandomNonWallNode() { return nullptr; };
 
 private:
 	int* mpValues;

@@ -14,6 +14,8 @@ public:
 	void setGrid(Grid* pGrid) { mpGrid = pGrid; };
 	void init();
 
+	Node* getRandomNonWallNode();
+
 private:
 	Grid* mpGrid;
 };

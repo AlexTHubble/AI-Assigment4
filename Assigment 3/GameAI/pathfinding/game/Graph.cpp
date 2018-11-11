@@ -53,3 +53,4 @@ Node* Graph::getNode( int index )
 		return NULL;
 	}
 }
+

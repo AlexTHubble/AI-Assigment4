@@ -4,6 +4,7 @@
 #include <vector>
 #include <map>
 #include <Trackable.h>
+#include <Vector2D.h>
 #include "Node.h"
 
 class Connection;
@@ -18,6 +19,9 @@ public:
 	std::vector<Connection*> getConnections(const Node& from);
 	std::vector<Connection*> getConnections(const NODE_ID& fromId);
 	Node* getNode(int index);
+
+	//Node* getRandomNonWallNode();
+
 
 protected:
 	//a vector of Node pointers

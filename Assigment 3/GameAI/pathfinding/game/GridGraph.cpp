@@ -83,3 +83,12 @@ void GridGraph::init()
 		}
 	}
 }
+
+Node * GridGraph::getRandomNonWallNode()
+{
+	int randIndex = rand() % mNodes.size(); //Gets a random index within the node list
+
+	//ADD A CHECK HERE TO SEE IF THE NODE IS A WALL OR NOT
+
+	return getNode(randIndex);
+}
