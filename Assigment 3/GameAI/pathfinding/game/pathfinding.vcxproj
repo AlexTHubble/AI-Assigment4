@@ -56,7 +56,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\..\DeanLib\include;..\..\..\external libs\SDL2\SDL\include;..\common;..\Grid Files</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\DeanLib\include;..\..\..\external libs\SDL2\SDL\include;..\common</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -91,8 +91,6 @@
     <ClInclude Include="..\common\Renderer.h" />
     <ClInclude Include="..\common\Sprite.h" />
     <ClInclude Include="..\common\SpriteManager.h" />
-    <ClInclude Include="..\Grid files\Grid.h" />
-    <ClInclude Include="..\Grid files\GridVisualizer.h" />
     <ClInclude Include="Compare.h" />
     <ClInclude Include="Connection.h" />
     <ClInclude Include="DebugContent.h" />
@@ -121,11 +119,11 @@
     <ClCompile Include="..\common\GraphicsBuffer.cpp" />
     <ClCompile Include="..\common\GraphicsBufferManager.cpp" />
     <ClCompile Include="..\common\GraphicsSystem.cpp" />
+    <ClCompile Include="..\common\Grid.cpp" />
+    <ClCompile Include="..\common\GridVisualizer.cpp" />
     <ClCompile Include="..\common\Renderer.cpp" />
     <ClCompile Include="..\common\Sprite.cpp" />
     <ClCompile Include="..\common\SpriteManager.cpp" />
-    <ClCompile Include="..\Grid files\Grid.cpp" />
-    <ClCompile Include="..\Grid files\GridVisualizer.cpp" />
     <ClCompile Include="Connection.cpp" />
     <ClCompile Include="DebugDisplay.cpp" />
     <ClCompile Include="DepthFirstPathfinder.cpp" />
