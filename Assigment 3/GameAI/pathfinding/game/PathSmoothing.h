@@ -1,6 +1,8 @@
 #ifndef PATH_SMOOTHING_H
 #define PATH_SMOOTHING_H
 
+#include "GridPathfinder.h"
+#include <vector>
 #include <map>
 #include <Trackable.h>
 

@@ -15,7 +15,7 @@ Path* PathSmoothing::SmoothPath(Graph * pGraph, Path * pPath)
 {
 	//If the path is two nodes long, then smoothing is not needed
 	//So return the path
-	if (pPath->getNumNodes == 2)
+	if (pPath->getNumNodes() == 2)
 	{
 		return pPath;
 	}
