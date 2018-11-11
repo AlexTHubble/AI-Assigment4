@@ -1,13 +1,40 @@
 #include "PathSmoothing.h"
+#include "GameApp.h"
+#include "GridGraph.h"
+#include "Grid.h"
 #include "Path.h"
 
-PathSmoothing::PathSmoothing()
+PathSmoothing::PathSmoothing(Graph* pGraph)
+	:GridPathfinder(dynamic_cast<GridGraph*>(pGraph))
 {
-
+	//If wallblock have not been loaded
+	if (wallBlocks.empty())
+	{
+		LoadWallBlocksVector();
+	}
 }
 
 PathSmoothing::~PathSmoothing()
 {
+	//Clear vector
+	wallBlocks.clear();
+}
+
+void PathSmoothing::LoadWallBlocksVector()
+{
+	//Get Grid
+	Grid* grid = dynamic_cast<GameApp*>(gpGame)->getGrid();
+	//Get number of indices
+	int numGridIndices = grid->getGridWidth() * grid->getGridHeight();
+	//Check each indice for if it is blocked or not
+	for (int i = 0; i < numGridIndices; i++)
+	{
+		//If it is equal to the blocking value add it to the list of walls
+		if (grid->getValueAtIndex(i) == BLOCKING_VALUE)
+		{
+			wallBlocks.push_back(mpGraph->getNode(i));
+		}
+	}
 
 }
 
@@ -49,6 +76,9 @@ Path* PathSmoothing::SmoothPath(Graph * pGraph, Path * pPath)
 
 bool PathSmoothing::RaycastToTarget(Node * current, Node * target)
 {
+	//Draw line from current node to target node
+
+	//If the line intersects with any of the wall blocks then it does not have sight of target
 	return false;
 }
 
