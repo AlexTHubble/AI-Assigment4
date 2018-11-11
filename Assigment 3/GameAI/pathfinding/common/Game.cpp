@@ -12,11 +12,14 @@
 #include "Font.h"
 #include <Timer.h>
 #include "Defines.h"
+#include "UnitManager.h"
+#include "ComponentManager.h"
 
 Game* gpGame = NULL;
 
 const int WIDTH = 1024;
 const int HEIGHT = 768;
+const Uint32 MAX_UNITS = 100;
 
 Game::Game()
 	:mpGraphicsSystem(NULL)
@@ -27,6 +30,8 @@ Game::Game()
 	,mShouldExit(false)
 	,mpFont(NULL)
 	,mLoopTargetTime(0.0f)
+	,mpUnitManager(NULL)
+	,mpComponentManager(NULL)
 {
 }
 
@@ -58,12 +63,23 @@ bool Game::init()
 	mpGraphicsBufferManager = new GraphicsBufferManager(mpGraphicsSystem);
 	mpSpriteManager = new SpriteManager();
 
-	
-	//load background
+	mpComponentManager = new ComponentManager(MAX_UNITS);
+	mpUnitManager = new UnitManager(MAX_UNITS);
+
+	//load background & arrow 
 	mpGraphicsBufferManager->loadBuffer(mBackgroundBufferID, "wallpaper.bmp");
+	mpGraphicsBufferManager->loadBuffer(mEnemyIconBufferID, "enemy-arrow.png");
 
 	//load Font
 	mpFont = new Font("cour.ttf", 24);
+
+	//Setup sprite
+	GraphicsBuffer* pAIBuffer = mpGraphicsBufferManager->getBuffer(mEnemyIconBufferID);
+	Sprite* pEnemyArrow = NULL;
+	if (pAIBuffer != NULL)
+	{
+		pEnemyArrow = mpSpriteManager->createAndManageSprite(AI_ICON_SPRITE_ID, pAIBuffer, 0, 0, (float)pAIBuffer->getWidth(), (float)pAIBuffer->getHeight());
+	}
 
 	return true;
 }
@@ -88,6 +104,10 @@ void Game::cleanup()
 	mpGraphicsBufferManager = NULL;
 	delete mpSpriteManager;
 	mpSpriteManager = NULL;
+	delete mpUnitManager;
+	mpUnitManager = NULL;
+	delete mpComponentManager;
+	mpComponentManager = NULL;
 }
 
 void Game::beginLoop()
@@ -99,9 +119,21 @@ void Game::beginLoop()
 	mpGraphicsSystem->draw(*pBackgroundSprite, 0.0f, 0.0f);
 }
 
+const float TARGET_ELAPSED_MS = LOOP_TARGET_TIME / 1000.0f;
+
 void Game::processLoop()
 {
-		mpGraphicsSystem->swap();
+	mpUnitManager->updateAll(TARGET_ELAPSED_MS);
+	mpComponentManager->update(TARGET_ELAPSED_MS);
+
+	Sprite* pBackgroundSprite = mpSpriteManager->getSprite(BACKGROUND_SPRITE_ID);
+	GraphicsBuffer* pDest = mpGraphicsSystem->getBackBuffer();
+	mpGraphicsSystem->draw(*pDest, *pBackgroundSprite, 0.0f, 0.0f);
+
+	//draw units
+	mpUnitManager->drawAll();
+
+	mpGraphicsSystem->swap();
 }
 
 bool Game::endLoop()
