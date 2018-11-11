@@ -18,11 +18,16 @@ class GraphicsBufferManager;
 class SpriteManager;
 class Game;
 class Font;
+class ComponentManager;
+class UnitManager;
 
 extern PerformanceTracker* gpPerformanceTracker;
 extern Game* gpGame;
 
+
 const IDType BACKGROUND_SPRITE_ID = 0;
+const IDType TARGET_SPRITE_ID = 3;
+const IDType AI_ICON_SPRITE_ID = 2;
 
 class Game:public Trackable
 {
@@ -45,11 +50,15 @@ public:
 	inline double getCurrentTime() const { return mpMasterTimer->getElapsedTime(); };
 	inline Font* getFont() const { return mpFont; };
 	inline void markForExit() { mShouldExit = true; };
+	inline ComponentManager* getComponentManager() { return mpComponentManager; };
+	inline UnitManager* getUnitManager() { return mpUnitManager; };
 
 protected:
 	GraphicsSystem* mpGraphicsSystem;
 	GraphicsBufferManager* mpGraphicsBufferManager;
 	SpriteManager* mpSpriteManager;
+	ComponentManager* mpComponentManager;
+	UnitManager* mpUnitManager;
 	Timer* mpLoopTimer;
 	Timer* mpMasterTimer;
 	float mLoopTargetTime;
