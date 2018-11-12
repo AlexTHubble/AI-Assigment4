@@ -79,7 +79,7 @@ Unit* UnitManager::createRandomUnit(const Sprite& sprite)
 	if (pUnit != NULL)
 	{
 		UnitID playerId = PLAYER_UNIT_ID;
-		pUnit->setShowTarget(true);
+		pUnit->setShowTarget(false);
 		pUnit->setSteering(Steering::PATHSEEK, NULL, playerId);
 	
 	}
