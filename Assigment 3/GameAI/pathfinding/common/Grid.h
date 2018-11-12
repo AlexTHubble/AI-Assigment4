@@ -3,6 +3,7 @@
 #include <fstream>
 #include <vector>
 #include "Trackable.h"
+#include "..\game\Node.h"
 
 class Vector2D;
 

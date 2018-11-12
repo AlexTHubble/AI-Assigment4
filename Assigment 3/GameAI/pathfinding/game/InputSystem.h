@@ -10,11 +10,12 @@
 #include "GameMessageManager.h"
 #include "PathToMessage.h"
 #include "Game.h"
+#include "SpawnRandomEnemyMessage.h"
 
 class InputSystem : public Trackable
 {
 public:
-	InputSystem();
+	InputSystem(SpriteManager* spriteManager, UnitManager* unitManager, IDType aiSpriteID);
 	~InputSystem();
 
 	void init();
@@ -27,6 +28,7 @@ public:
 private:
 	GameMessageManager * mpMessageManager;
 	SpriteManager * mpSpriteManager;
+	UnitManager * mpUnitManager;
 	IDType mAiSpriteID;
 };
 

@@ -88,7 +88,15 @@ Node * GridGraph::getRandomNonWallNode()
 {
 	int randIndex = rand() % mNodes.size(); //Gets a random index within the node list
 
+	if (mpGrid->getValueAtIndex(randIndex) != BLOCKING_VALUE)
+	{
+		return getNode(randIndex);
+	}
+	else
+	{
+		return getNode(0);
+	}
 	//ADD A CHECK HERE TO SEE IF THE NODE IS A WALL OR NOT
 
-	return getNode(randIndex);
+	
 }

@@ -1,8 +1,11 @@
 #include "InputSystem.h"
 #include "GameApp.h"
 
-InputSystem::InputSystem()
+InputSystem::InputSystem(SpriteManager* spriteManager, UnitManager* unitManager, IDType aiSpriteID)
 {
+	mpSpriteManager = spriteManager;
+	mpUnitManager = unitManager;
+	mAiSpriteID = aiSpriteID;
 }
 
 InputSystem::~InputSystem()
@@ -39,6 +42,7 @@ void InputSystem::update()
 			Vector2D pos(x, y);
 			if (lastPos.getX() != pos.getX() || lastPos.getY() != pos.getY())
 			{
+				
 				GameMessage* pMessage = new PathToMessage(lastPos, pos);
 				mpMessageManager->addMessage(pMessage, 0);
 				lastPos = pos;
@@ -59,6 +63,12 @@ void InputSystem::update()
 		if (state[SDL_SCANCODE_A])
 		{
 			dynamic_cast<GameApp*>(gpGame)->setPathAstar();
+		}
+
+		if (state[SDL_SCANCODE_S])
+		{
+			GameMessage* pMessage = new SpawnRandomEnemyMessage(mpUnitManager, mpSpriteManager, mAiSpriteID, 10);
+			mpMessageManager->addMessage(pMessage, 0);
 		}
 
 		//if escape key was down then exit the loop
