@@ -104,5 +104,6 @@ void Grid::load( std::ifstream& file )
 	for( int i=0; i<numSquares; i++ )
 	{
 		file >> mpValues[i];
+		cout << mpValues[i] << endl;
 	}
 }

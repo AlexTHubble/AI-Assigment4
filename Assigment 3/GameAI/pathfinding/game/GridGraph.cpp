@@ -96,7 +96,6 @@ Node * GridGraph::getRandomNonWallNode()
 	{
 		return getNode(0);
 	}
-	//ADD A CHECK HERE TO SEE IF THE NODE IS A WALL OR NOT
 
 	
 }

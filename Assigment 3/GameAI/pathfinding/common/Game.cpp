@@ -67,7 +67,7 @@ bool Game::init()
 	mpUnitManager = new UnitManager(MAX_UNITS);
 
 	//load background & arrow 
-	mpGraphicsBufferManager->loadBuffer(mBackgroundBufferID, "wallpaper.bmp");
+	//mpGraphicsBufferManager->loadBuffer(mBackgroundBufferID, "wallpaper.bmp");
 	mpGraphicsBufferManager->loadBuffer(mEnemyIconBufferID, "enemy-arrow.png");
 
 	//load Font
@@ -125,10 +125,6 @@ void Game::processLoop()
 {
 	mpUnitManager->updateAll(TARGET_ELAPSED_MS);
 	mpComponentManager->update(TARGET_ELAPSED_MS);
-
-	Sprite* pBackgroundSprite = mpSpriteManager->getSprite(BACKGROUND_SPRITE_ID);
-	GraphicsBuffer* pDest = mpGraphicsSystem->getBackBuffer();
-	mpGraphicsSystem->draw(*pDest, *pBackgroundSprite, 0.0f, 0.0f);
 
 	//draw units
 	mpUnitManager->drawAll();
