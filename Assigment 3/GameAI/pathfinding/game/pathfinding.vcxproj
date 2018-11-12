@@ -81,6 +81,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\common\Color.h" />
+    <ClInclude Include="..\common\Component.h" />
+    <ClInclude Include="..\common\ComponentManager.h" />
     <ClInclude Include="..\common\Font.h" />
     <ClInclude Include="..\common\Game.h" />
     <ClInclude Include="..\common\GraphicsBuffer.h" />
@@ -88,9 +90,15 @@
     <ClInclude Include="..\common\GraphicsSystem.h" />
     <ClInclude Include="..\common\Grid.h" />
     <ClInclude Include="..\common\GridVisualizer.h" />
+    <ClInclude Include="..\common\PhysicsComponent.h" />
+    <ClInclude Include="..\common\PositionComponent.h" />
     <ClInclude Include="..\common\Renderer.h" />
     <ClInclude Include="..\common\Sprite.h" />
     <ClInclude Include="..\common\SpriteManager.h" />
+    <ClInclude Include="..\common\Steering.h" />
+    <ClInclude Include="..\common\SteeringComponent.h" />
+    <ClInclude Include="..\common\Unit.h" />
+    <ClInclude Include="..\common\UnitManager.h" />
     <ClInclude Include="Compare.h" />
     <ClInclude Include="Connection.h" />
     <ClInclude Include="DebugContent.h" />
@@ -111,9 +119,12 @@
     <ClInclude Include="PathSmoothing.h" />
     <ClInclude Include="PathToMessage.h" />
     <ClInclude Include="PriorityQueue(NEW).h" />
+    <ClInclude Include="SpawnRandomEnemyMessage.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common\Color.cpp" />
+    <ClCompile Include="..\common\Component.cpp" />
+    <ClCompile Include="..\common\ComponentManager.cpp" />
     <ClCompile Include="..\common\Font.cpp" />
     <ClCompile Include="..\common\Game.cpp" />
     <ClCompile Include="..\common\GraphicsBuffer.cpp" />
@@ -121,9 +132,15 @@
     <ClCompile Include="..\common\GraphicsSystem.cpp" />
     <ClCompile Include="..\common\Grid.cpp" />
     <ClCompile Include="..\common\GridVisualizer.cpp" />
+    <ClCompile Include="..\common\PhysicsComponent.cpp" />
+    <ClCompile Include="..\common\PositionComponent.cpp" />
     <ClCompile Include="..\common\Renderer.cpp" />
     <ClCompile Include="..\common\Sprite.cpp" />
     <ClCompile Include="..\common\SpriteManager.cpp" />
+    <ClCompile Include="..\common\Steering.cpp" />
+    <ClCompile Include="..\common\SteeringComponent.cpp" />
+    <ClCompile Include="..\common\Unit.cpp" />
+    <ClCompile Include="..\common\UnitManager.cpp" />
     <ClCompile Include="Connection.cpp" />
     <ClCompile Include="DebugDisplay.cpp" />
     <ClCompile Include="DepthFirstPathfinder.cpp" />
@@ -142,6 +159,7 @@
     <ClCompile Include="PathfindingDebugContent.cpp" />
     <ClCompile Include="PathSmoothing.cpp" />
     <ClCompile Include="PathToMessage.cpp" />
+    <ClCompile Include="SpawnRandomEnemyMessage.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -28,6 +28,12 @@
     <Filter Include="Source Files\pathfinding">
       <UniqueIdentifier>{474fbefa-c012-4187-954c-fdb12b4f06d7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Messages">
+      <UniqueIdentifier>{610c3f18-eb48-455b-aee0-3c7a73e18f01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Messages">
+      <UniqueIdentifier>{bebe82e3-d821-4908-8b2e-8e4863bc9f45}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common\Game.h">
@@ -78,9 +84,6 @@
     <ClInclude Include="..\common\GridVisualizer.h">
       <Filter>Common\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PathToMessage.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GridPathfinder.h">
       <Filter>Header Files\pathfinding</Filter>
     </ClInclude>
@@ -122,6 +125,36 @@
     </ClInclude>
     <ClInclude Include="PathSmoothing.h">
       <Filter>Header Files\pathfinding</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\Component.h">
+      <Filter>Common\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\ComponentManager.h">
+      <Filter>Common\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\Steering.h">
+      <Filter>Common\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\SteeringComponent.h">
+      <Filter>Common\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\PositionComponent.h">
+      <Filter>Common\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\PhysicsComponent.h">
+      <Filter>Common\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PathToMessage.h">
+      <Filter>Header Files\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="SpawnRandomEnemyMessage.h">
+      <Filter>Header Files\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\Unit.h">
+      <Filter>Common\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\UnitManager.h">
+      <Filter>Common\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -170,9 +203,6 @@
     <ClCompile Include="DepthFirstPathfinder.cpp">
       <Filter>Source Files\pathfinding</Filter>
     </ClCompile>
-    <ClCompile Include="PathToMessage.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GridPathfinder.cpp">
       <Filter>Source Files\pathfinding</Filter>
     </ClCompile>
@@ -210,6 +240,36 @@
       <Filter>Common\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\common\Grid.cpp">
+      <Filter>Common\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\Component.cpp">
+      <Filter>Common\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\ComponentManager.cpp">
+      <Filter>Common\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\Steering.cpp">
+      <Filter>Common\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\SteeringComponent.cpp">
+      <Filter>Common\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\PhysicsComponent.cpp">
+      <Filter>Common\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\PositionComponent.cpp">
+      <Filter>Common\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PathToMessage.cpp">
+      <Filter>Source Files\Messages</Filter>
+    </ClCompile>
+    <ClCompile Include="SpawnRandomEnemyMessage.cpp">
+      <Filter>Source Files\Messages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\Unit.cpp">
+      <Filter>Common\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\UnitManager.cpp">
       <Filter>Common\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
