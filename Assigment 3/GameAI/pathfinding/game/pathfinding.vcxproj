@@ -119,6 +119,7 @@
     <ClInclude Include="PathSmoothing.h" />
     <ClInclude Include="PathToMessage.h" />
     <ClInclude Include="PriorityQueue(NEW).h" />
+    <ClInclude Include="SmoothPathFinding.h" />
     <ClInclude Include="SpawnRandomEnemyMessage.h" />
   </ItemGroup>
   <ItemGroup>
@@ -159,6 +160,7 @@
     <ClCompile Include="PathfindingDebugContent.cpp" />
     <ClCompile Include="PathSmoothing.cpp" />
     <ClCompile Include="PathToMessage.cpp" />
+    <ClCompile Include="SmoothPathFinding.cpp" />
     <ClCompile Include="SpawnRandomEnemyMessage.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
