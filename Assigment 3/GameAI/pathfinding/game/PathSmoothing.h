@@ -11,10 +11,10 @@ class Path;
 class Graph;
 class Grid;
 
-class PathSmoothing : public GridPathfinder
+class PathSmoothing : public Trackable
 {
 public:
-	PathSmoothing(Graph* pGraph);
+	PathSmoothing();
 	~PathSmoothing();
 	//
 	void LoadWallBlocksVector();

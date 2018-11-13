@@ -5,8 +5,7 @@
 #include "Path.h"
 #include <math.h>
 
-PathSmoothing::PathSmoothing(Graph* pGraph)
-	:GridPathfinder(dynamic_cast<GridGraph*>(pGraph))
+PathSmoothing::PathSmoothing()
 {
 	//If wallblock have not been loaded
 	if (wallBlocks.empty())
@@ -25,6 +24,7 @@ void PathSmoothing::LoadWallBlocksVector()
 {
 	//Get Grid
 	Grid* grid = dynamic_cast<GameApp*>(gpGame)->getGrid();
+	Graph* graph = dynamic_cast<GameApp*>(gpGame)->getGridGraph();
 	//Get number of indices
 	int numGridIndices = grid->getGridWidth() * grid->getGridHeight();
 	//Check each indice for if it is blocked or not
@@ -33,7 +33,7 @@ void PathSmoothing::LoadWallBlocksVector()
 		//If it is equal to the blocking value add it to the list of walls
 		if (grid->getValueAtIndex(i) == BLOCKING_VALUE)
 		{
-			wallBlocks.push_back(mpGraph->getNode(i));
+			wallBlocks.push_back(graph->getNode(i));
 		}
 	}
 
