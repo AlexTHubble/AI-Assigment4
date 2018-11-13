@@ -29,7 +29,6 @@ Unit::Unit(const Sprite& sprite)
 
 Unit::~Unit()
 {
-
 }
 
 void Unit::draw() const
@@ -77,6 +76,11 @@ SteeringComponent* Unit::getSteeringComponent() const
 	return pComponent;
 }
 
+void Unit::setPath(Path * path)
+{
+	mPath = path;
+}
+
 void Unit::setSteering(Steering::SteeringType type, Vector2D targetLoc, UnitID targetUnitID)
 {
 	SteeringComponent* pSteeringComponent = getSteeringComponent();
@@ -96,6 +100,7 @@ void Unit::updateTarget()
 			{
 				//Set Steering
 				GameApp* pGame = dynamic_cast<GameApp*>(gpGame);
+				cout << mPath->peekNode(mPath->getNumNodes() - (mCurrentNode + 1))->getId() << endl;
 				setSteering(Steering::ARRIVEANDFACE, pGame->getGrid()->getULCornerOfSquare(mPath->peekNode(mPath->getNumNodes() - (mCurrentNode + 1))->getId()), INVALID_UNIT_ID);
 				//
 			}

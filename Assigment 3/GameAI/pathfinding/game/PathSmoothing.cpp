@@ -56,11 +56,11 @@ Path* PathSmoothing::SmoothPath(Graph * pGraph, Path * pPath)
 	smoothPath->addNode(pPath->peekNode(0));
 
 	//Loop until we find the last item in the smoothPath
-	while (pathIndex < smoothPath->getNumNodes() - 1)
+	while (pathIndex < pPath->getNumNodes() - 1)
 	{
 		//Do Raycast
 		//If it doesn't pass
-		if (!RaycastToTarget(pPath->peekNode(pathIndex), smoothPath->peekNode(smoothPath->getNumNodes() - 1)))
+		if (!RaycastToTarget(smoothPath->peekNode(smoothPath->getNumNodes() - 1), pPath->peekNode(pathIndex)))
 		{
 			//If Raycast does not clear, add the last node that
 			//passed to the output list
@@ -183,4 +183,24 @@ int PathSmoothing::Orientation(Vector2D p, Vector2D q, Vector2D r)
 	return (val > 0)? 1 : 2;
 }
 
-
+////Get Grid
+//Grid* grid = dynamic_cast<GameApp*>(gpGame)->getGrid();
+////Get point variables
+//float x0 = grid->getULCornerOfSquare(current->getId()).getX();
+//float y0 = grid->getULCornerOfSquare(current->getId()).getY();
+//float x1 = grid->getULCornerOfSquare(target->getId()).getX();
+//float y1 = grid->getULCornerOfSquare(target->getId()).getY();
+//
+////
+//float dx = abs(x1 - x0);
+//float dy = abs(y1 - y0);
+//float x = x0;
+//float y = y0;
+//float n = 1 + dx + dy;
+//float x_inc = (x1 > x0) ? 1 : -1;
+//float y_inc = (y1 > y0) ? 1 : -1;
+//float error = dx - dy;
+//dx *= 2;
+//dy *= 2;
+//
+//for (; n > 0; --n)

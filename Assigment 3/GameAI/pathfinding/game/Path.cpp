@@ -1,4 +1,5 @@
 #include "Path.h"
+#include "Node.h"
 
 Path::Path()
 {
@@ -49,6 +50,14 @@ Node* Path::getAndRemoveNextNode()
 void Path::addNode( Node* pNode )
 {
 	mNodes.push_back( pNode );
+}
+
+void Path::outputMapToConsole()
+{
+	for each(Node* node in mNodes)
+	{
+		cout << node->getId() << endl;
+	}
 }
 
 bool Path::containsNode( Node* pNode )

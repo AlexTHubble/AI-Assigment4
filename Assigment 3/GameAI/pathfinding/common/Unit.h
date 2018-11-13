@@ -27,9 +27,12 @@ const Uint32 DEFAULT_QUEUE_CAPACITY = 8;
 class Unit : public Trackable
 {
 public:
+	~Unit();
+
 	void draw() const;
 	float getFacing() const;
 	void update(float elapsedTime){};
+
 
 	PositionComponent* getPositionComponent() const;
 	PhysicsComponent* getPhysicsComponent() const;
@@ -39,7 +42,7 @@ public:
 	float getMaxRotAcc() const { return mMaxRotAcc; };
 	float getMaxRotVel() const { return mMaxRotVel; };
 	void setShowTarget(bool val) { mShowTarget = val; };
-	void setPath(Path* path) { mPath = path; };
+	void setPath(Path* path);
 	void setToUpdateTarget() { ShouldUpdateTarget = true; };
 	UnitID getID() { return mID; };
 
@@ -64,7 +67,7 @@ private:
 	int mCurrentNode;
 
 	Unit(const Sprite& sprite);
-	virtual ~Unit();
+
 
 	Unit(Unit&);//invalidate copy constructor
 	void operator=(Unit&);//invalidate assignment operator

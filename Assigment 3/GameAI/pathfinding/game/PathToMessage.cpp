@@ -52,6 +52,8 @@ void PathToMessage::process()
 				//pPath = path->findPath(pFromNode, pToNode);
 				//Set Path
 
+				pPath->outputMapToConsole();
+
 				it->second->setPath(pPath);
 				it->second->setToUpdateTarget();
 

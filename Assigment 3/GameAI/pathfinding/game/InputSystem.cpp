@@ -67,7 +67,7 @@ void InputSystem::update()
 
 		if (state[SDL_SCANCODE_S])
 		{
-			GameMessage* pMessage = new SpawnRandomEnemyMessage(mpUnitManager, mpSpriteManager, mAiSpriteID, 10);
+			GameMessage* pMessage = new SpawnRandomEnemyMessage(mpUnitManager, mpSpriteManager, mAiSpriteID, 1);
 			mpMessageManager->addMessage(pMessage, 0);
 		}
 

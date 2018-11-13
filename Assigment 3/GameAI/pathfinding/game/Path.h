@@ -5,6 +5,7 @@
 #include <Trackable.h>
 
 class Node;
+using namespace std;
 
 class Path :public Trackable
 {
@@ -19,6 +20,7 @@ public:
 	int getNumNodes() const { return mNodes.size(); };
 
 	void addNode(Node* pNode);
+	void outputMapToConsole();
 
 private:
 	std::vector<Node*> mNodes;
