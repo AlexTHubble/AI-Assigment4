@@ -37,6 +37,7 @@ public:
 	float getMaxRotAcc() const { return mMaxRotAcc; };
 	float getMaxRotVel() const { return mMaxRotVel; };
 	void setShowTarget(bool val) { mShowTarget = val; };
+	UnitID getID() { return mID; };
 
 	void setSteering(Steering::SteeringType type, Vector2D targetLoc, UnitID targetUnitID);
 

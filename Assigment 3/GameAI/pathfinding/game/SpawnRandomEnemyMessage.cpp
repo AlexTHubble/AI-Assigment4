@@ -18,6 +18,13 @@ SpawnRandomEnemyMessage::~SpawnRandomEnemyMessage()
 
 void SpawnRandomEnemyMessage::process()
 {
+	std::map<UnitID, Unit*> mUnitMap = mpUnitManager->getUnitMap();
+
+	for (std::map<UnitID, Unit*>::iterator unit = mUnitMap.begin(); unit != mUnitMap.end(); ++unit)
+	{
+		mpUnitManager->deleteUnit(unit->second->getID());
+	}
+
 
 	for(int i = 0; i < mNumberToSpawn; i++)
 		Unit* pUnit = mpUnitManager->createRandomUnit(*mpSpriteManager->getSprite(mAiSpriteId));
