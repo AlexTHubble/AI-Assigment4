@@ -96,6 +96,7 @@
     <ClInclude Include="..\common\PhysicsComponent.h" />
     <ClInclude Include="..\common\PositionComponent.h" />
     <ClInclude Include="..\common\Renderer.h" />
+    <ClInclude Include="..\common\SeekSteering.h" />
     <ClInclude Include="..\common\Sprite.h" />
     <ClInclude Include="..\common\SpriteManager.h" />
     <ClInclude Include="..\common\Steering.h" />
@@ -142,6 +143,7 @@
     <ClCompile Include="..\common\PhysicsComponent.cpp" />
     <ClCompile Include="..\common\PositionComponent.cpp" />
     <ClCompile Include="..\common\Renderer.cpp" />
+    <ClCompile Include="..\common\SeekSteering.cpp" />
     <ClCompile Include="..\common\Sprite.cpp" />
     <ClCompile Include="..\common\SpriteManager.cpp" />
     <ClCompile Include="..\common\Steering.cpp" />

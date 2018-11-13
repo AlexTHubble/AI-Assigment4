@@ -168,6 +168,9 @@
     <ClInclude Include="..\common\Arrive.h">
       <Filter>Common\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\common\SeekSteering.h">
+      <Filter>Common\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common\Game.cpp">
@@ -294,6 +297,9 @@
       <Filter>Common\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\common\Arrive.cpp">
+      <Filter>Common\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\SeekSteering.cpp">
       <Filter>Common\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
