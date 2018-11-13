@@ -35,16 +35,16 @@ Path* PathSmoothing::SmoothPath(Graph * pGraph, Path * pPath)
 	{
 		//Do Raycast
 		//If it doesn't pass
-		if (!RaycastToTarget(pPath->peekNode(pathIndex), pPath->peekNode(pathIndex + currentNode)))
+		if (!RaycastToTarget(pPath->peekNode(pathIndex), pPath->peekNode(currentNode)))
 		{
 			//If Raycast does not clear, add the last node that
 			//passed to the output list
 			smoothPath->addNode(pPath->peekNode(currentNode - 1));
+			//Increment to next node
+			pathIndex++;
 		}
-		//???
+		//Increment pathIndex
 		currentNode++;
-		//Increment to next node
-		pathIndex++;
 	}	
 	//We've reached the end of the path list, ass the
 	//end node to the output and return it
@@ -62,7 +62,8 @@ bool PathSmoothing::RaycastToTarget(Node * current, Node * target)
 	float x1 = grid->getULCornerOfSquare(target->getId()).getX();
 	float y1 = grid->getULCornerOfSquare(target->getId()).getY();
 
-	//
+	//Bresenham Raytracing 
+	//http://playtechs.blogspot.com/2007/03/raytracing-on-grid.html
 	float dx = abs(x1 - x0);
 	float dy = abs(y1 - y0);
 	float x = x0;

@@ -39,14 +39,11 @@ void PathToMessage::process()
 				int fromIndex = pGrid->getSquareIndexFromPixelXY((int)mFrom.getX(), (int)mFrom.getY());
 				int toIndex = pGrid->getSquareIndexFromPixelXY((int)mTo.getX(), (int)mTo.getY());
 				Node* pToNode = pGridGraph->getNode(toIndex);
-
+				Node* pFromNode = pGridGraph->getNode(fromIndex);
 				//Path
 				Path* pPath;
-				//Get From Node
-				Node* pFromNode = pGridGraph->getNode(pGrid->getSquareIndexFromPixelXY(it->second->getPositionComponent()->getPosition().getX(), 
-					                                                                   it->second->getPositionComponent()->getPosition().getY()));
 				//SmoothPath
-				SmoothPathFinding* smoothPath = new SmoothPathFinding(pGridGraph);
+				smoothPath = new SmoothPathFinding(pGridGraph);
 				pPath = smoothPath->FindPath(pFromNode, pToNode);
 				//Dijsktra* path = new Dijsktra(pGridGraph, true);
 				//pPath = path->findPath(pFromNode, pToNode);

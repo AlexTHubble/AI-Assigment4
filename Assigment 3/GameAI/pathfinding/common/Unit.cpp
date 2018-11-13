@@ -94,13 +94,13 @@ void Unit::updateTarget()
 		{
 			if (mCurrentNode < mPath->getNumNodes())
 			{
+				mCurrentNode++;
 				//Set Steering
 				GameApp* pGame = dynamic_cast<GameApp*>(gpGame);
-				setSteering(Steering::ARRIVEANDFACE, pGame->getGrid()->getULCornerOfSquare(mPath->peekNode(mPath->getNumNodes() - (mCurrentNode + 1))->getId()), INVALID_UNIT_ID);
+				setSteering(Steering::ARRIVEANDFACE, pGame->getGrid()->getULCornerOfSquare(mPath->peekNode(mPath->getNumNodes() - (mCurrentNode))->getId()), INVALID_UNIT_ID);
 				//
 			}
 			ShouldUpdateTarget = false;
-			mCurrentNode++;
 		}
 	}
 }
