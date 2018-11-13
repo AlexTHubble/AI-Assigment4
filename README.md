@@ -5,8 +5,6 @@
 
 ## Assignment Details
 
----
-
 ### This repository contains three major directories:
  * DeanLib - Base utility library provided by Dean Lawson. Memory tracking and basic vector mathematics utilities.
  * External Libs - Allegro 5.0.10 support libraries.
