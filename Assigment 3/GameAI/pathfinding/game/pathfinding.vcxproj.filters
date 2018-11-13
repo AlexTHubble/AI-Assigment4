@@ -159,6 +159,9 @@
     <ClInclude Include="SmoothPathFinding.h">
       <Filter>Header Files\pathfinding</Filter>
     </ClInclude>
+    <ClInclude Include="..\common\ArriveAndFace.h">
+      <Filter>Common\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common\Game.cpp">
@@ -277,6 +280,9 @@
     </ClCompile>
     <ClCompile Include="SmoothPathFinding.cpp">
       <Filter>Source Files\pathfinding</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\ArriveAndFace.cpp">
+      <Filter>Common\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -80,6 +80,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\common\ArriveAndFace.h" />
     <ClInclude Include="..\common\Color.h" />
     <ClInclude Include="..\common\Component.h" />
     <ClInclude Include="..\common\ComponentManager.h" />
@@ -123,6 +124,7 @@
     <ClInclude Include="SpawnRandomEnemyMessage.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\common\ArriveAndFace.cpp" />
     <ClCompile Include="..\common\Color.cpp" />
     <ClCompile Include="..\common\Component.cpp" />
     <ClCompile Include="..\common\ComponentManager.cpp" />
