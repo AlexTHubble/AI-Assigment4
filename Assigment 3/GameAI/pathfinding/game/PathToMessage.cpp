@@ -4,6 +4,8 @@
 #include "GridPathfinder.h"
 #include "Grid.h"
 #include "GridGraph.h"
+#include "UnitManager.h"
+#include "SmoothPathFinding.h"
 
 PathToMessage::PathToMessage( const Vector2D& from, const Vector2D& to )
 :GameMessage(PATH_TO_MESSAGE)
@@ -26,8 +28,27 @@ void PathToMessage::process()
 		Grid* pGrid = pGame->getGrid();
 		int fromIndex = pGrid->getSquareIndexFromPixelXY( (int)mFrom.getX(), (int)mFrom.getY() );
 		int toIndex = pGrid->getSquareIndexFromPixelXY( (int)mTo.getX(), (int)mTo.getY() );
-		Node* pFromNode = pGridGraph->getNode( fromIndex );
+		//
 		Node* pToNode = pGridGraph->getNode( toIndex );
-		pPathfinder->findPath( pFromNode, pToNode );
+
+		//Get map from Gamemanager
+		std::map<UnitID, Unit*> unitMap = gpGame->getUnitManager()->getUnitMap();
+
+		//If unitMap contains units
+		if (unitMap.size() > 0)
+		{
+			//Create iterator
+			std::map<UnitID, Unit*>::iterator it;
+			//Loop through all unit in Unitmanager
+			for (it = unitMap.begin(); it!= unitMap.end(); ++it)
+			{
+				//Get From Node
+				Node* pFromNode = pGridGraph->getNode(pGrid->getSquareIndexFromPixelXY(it->second->getPositionComponent()->getPosition().getX(), 
+					                                                                   it->second->getPositionComponent()->getPosition().getY()));
+				//SmoothPath
+				SmoothPathFinding* smoothPath;
+				smoothPath->FindPath(pFromNode, pToNode);
+			}
+		}
 	}
 }

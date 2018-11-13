@@ -9,6 +9,8 @@
 #include "SteeringComponent.h"
 #include "ComponentManager.h"
 #include "SpriteManager.h"
+#include "../game/Path.h"
+#include "Steering.h"
 
 
 Unit::Unit(const Sprite& sprite) 
@@ -18,6 +20,7 @@ Unit::Unit(const Sprite& sprite)
 	,mSteeringComponentID(INVALID_COMPONENT_ID)
 	,mShowTarget(false)
 {
+	mCurrentNode = 0;
 }
 
 Unit::~Unit()
@@ -75,5 +78,20 @@ void Unit::setSteering(Steering::SteeringType type, Vector2D targetLoc, UnitID t
 	if (pSteeringComponent != NULL)
 	{
 		pSteeringComponent->setData(SteeringData(type, targetLoc, mID, targetUnitID));
+	}
+}
+
+void Unit::updateTarget()
+{
+	if (mPath != nullptr)
+	{
+		if (ShouldUpdateTarget)
+		{
+			mCurrentNode++;
+			if (mCurrentNode < mPath->getNumNodes())
+			{
+				//setSteering(Steering::)
+			}
+		}
 	}
 }
