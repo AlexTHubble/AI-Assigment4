@@ -6,7 +6,7 @@
 #include <math.h>
 
 
-const float PI = 3.1456;
+//const float PI = 3.1456;
 const float RADIAN_TO_DEGREE = 180 / PI; //Formula for converting a radian to a degree
 const float DEGREE_TO_RADIAN = PI / 180; //Fomula for converting a degree to a radian 
 

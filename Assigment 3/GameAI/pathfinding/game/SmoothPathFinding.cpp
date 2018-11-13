@@ -16,10 +16,10 @@ SmoothPathFinding::~SmoothPathFinding()
 
 Path * SmoothPathFinding::FindPath(Node * pFrom, Node * pTo)
 {
-	//PathSmoothing
-	PathSmoothing* pathSmoothing;
 	//Path
 	Path* pPath;
+	//PathSmoothing
+	PathSmoothing* pathSmoothing = new PathSmoothing();
 	//A* Pathfinding
 	pPath = findPath(pFrom, pTo);
 	//Smooth path

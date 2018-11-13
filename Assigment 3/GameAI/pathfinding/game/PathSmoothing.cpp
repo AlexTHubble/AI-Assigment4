@@ -60,7 +60,7 @@ Path* PathSmoothing::SmoothPath(Graph * pGraph, Path * pPath)
 	{
 		//Do Raycast
 		//If it doesn't pass
-		if (!RaycastToTarget(smoothPath->peekNode(smoothPath->getNumNodes() - 1), pPath->peekNode(pathIndex)))
+		if (!RaycastToTarget(pPath->peekNode(pathIndex), smoothPath->peekNode(smoothPath->getNumNodes() - 1)))
 		{
 			//If Raycast does not clear, add the last node that
 			//passed to the output list

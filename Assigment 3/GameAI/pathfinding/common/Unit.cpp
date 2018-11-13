@@ -2,6 +2,7 @@
 #include <assert.h>
 
 #include "Game.h"
+#include "../game/GameApp.h"
 #include "GraphicsSystem.h"
 #include "Component.h"
 #include "PositionComponent.h"
@@ -11,6 +12,8 @@
 #include "SpriteManager.h"
 #include "../game/Path.h"
 #include "Steering.h"
+#include "../game/Node.h"
+#include "Grid.h"
 
 
 Unit::Unit(const Sprite& sprite) 
@@ -21,10 +24,12 @@ Unit::Unit(const Sprite& sprite)
 	,mShowTarget(false)
 {
 	mCurrentNode = 0;
+	ShouldUpdateTarget = false;
 }
 
 Unit::~Unit()
 {
+
 }
 
 void Unit::draw() const
@@ -87,11 +92,15 @@ void Unit::updateTarget()
 	{
 		if (ShouldUpdateTarget)
 		{
-			mCurrentNode++;
 			if (mCurrentNode < mPath->getNumNodes())
 			{
-				//setSteering(Steering::)
+				//Set Steering
+				GameApp* pGame = dynamic_cast<GameApp*>(gpGame);
+				setSteering(Steering::ARRIVEANDFACE, pGame->getGrid()->getULCornerOfSquare(mPath->peekNode(mPath->getNumNodes() - (mCurrentNode + 1))->getId()), INVALID_UNIT_ID);
+				//
 			}
+			ShouldUpdateTarget = false;
+			mCurrentNode++;
 		}
 	}
 }

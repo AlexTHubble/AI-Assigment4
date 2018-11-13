@@ -18,6 +18,9 @@ public:
 		INVALID_TYPE = -1,
 		SEEK,
 		PATHSEEK,
+		ARRIVE,
+		FLEE,
+		ARRIVEANDFACE,
 		STOP
 	};
 

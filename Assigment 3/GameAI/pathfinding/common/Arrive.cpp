@@ -102,6 +102,8 @@ void Arrive::testForArrival(float distance)
 	if (distance < mStopSteeringRadius) //Arrived
 	{
 		mType = Steering::STOP;
+		Unit* pOwner = gpGame->getUnitManager()->getUnit(mOwnerID);
+		pOwner->setToUpdateTarget();
 		return;
 	}	
 	if (distance > mSlowRadius) //Outside radius

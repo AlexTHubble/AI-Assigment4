@@ -23,17 +23,8 @@ void PathToMessage::process()
 	GameApp* pGame = dynamic_cast<GameApp*>(gpGame);
 	if( pGame != NULL ) 
 	{
-		GridPathfinder* pPathfinder = pGame->getPathfinder();
-		GridGraph* pGridGraph = pGame->getGridGraph();
-		Grid* pGrid = pGame->getGrid();
-		int fromIndex = pGrid->getSquareIndexFromPixelXY( (int)mFrom.getX(), (int)mFrom.getY() );
-		int toIndex = pGrid->getSquareIndexFromPixelXY( (int)mTo.getX(), (int)mTo.getY() );
-		//
-		Node* pToNode = pGridGraph->getNode( toIndex );
-
 		//Get map from Gamemanager
 		std::map<UnitID, Unit*> unitMap = gpGame->getUnitManager()->getUnitMap();
-
 		//If unitMap contains units
 		if (unitMap.size() > 0)
 		{
@@ -42,12 +33,26 @@ void PathToMessage::process()
 			//Loop through all unit in Unitmanager
 			for (it = unitMap.begin(); it!= unitMap.end(); ++it)
 			{
+				GridPathfinder* pPathfinder = pGame->getPathfinder();
+				GridGraph* pGridGraph = pGame->getGridGraph();
+				Grid* pGrid = pGame->getGrid();
+				int fromIndex = pGrid->getSquareIndexFromPixelXY((int)mFrom.getX(), (int)mFrom.getY());
+				int toIndex = pGrid->getSquareIndexFromPixelXY((int)mTo.getX(), (int)mTo.getY());
+				Node* pToNode = pGridGraph->getNode(toIndex);
+
+				//Path
+				Path* pPath;
 				//Get From Node
 				Node* pFromNode = pGridGraph->getNode(pGrid->getSquareIndexFromPixelXY(it->second->getPositionComponent()->getPosition().getX(), 
 					                                                                   it->second->getPositionComponent()->getPosition().getY()));
 				//SmoothPath
-				SmoothPathFinding* smoothPath;
-				smoothPath->FindPath(pFromNode, pToNode);
+				SmoothPathFinding* smoothPath = new SmoothPathFinding(pGridGraph);
+				pPath = smoothPath->FindPath(pFromNode, pToNode);
+				//Dijsktra* path = new Dijsktra(pGridGraph, true);
+				//pPath = path->findPath(pFromNode, pToNode);
+				//Set Path
+				it->second->setPath(pPath);
+				it->second->setToUpdateTarget();
 			}
 		}
 	}
