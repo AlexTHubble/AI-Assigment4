@@ -162,6 +162,12 @@
     <ClInclude Include="..\common\ArriveAndFace.h">
       <Filter>Common\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\common\FaceSteering.h">
+      <Filter>Common\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\Arrive.h">
+      <Filter>Common\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common\Game.cpp">
@@ -282,6 +288,12 @@
       <Filter>Source Files\pathfinding</Filter>
     </ClCompile>
     <ClCompile Include="..\common\ArriveAndFace.cpp">
+      <Filter>Common\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\FaceSteering.cpp">
+      <Filter>Common\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\Arrive.cpp">
       <Filter>Common\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
