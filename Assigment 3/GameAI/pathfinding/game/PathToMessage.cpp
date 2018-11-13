@@ -51,8 +51,11 @@ void PathToMessage::process()
 				//Dijsktra* path = new Dijsktra(pGridGraph, true);
 				//pPath = path->findPath(pFromNode, pToNode);
 				//Set Path
+
 				it->second->setPath(pPath);
 				it->second->setToUpdateTarget();
+
+				delete smoothPath;
 			}
 		}
 	}

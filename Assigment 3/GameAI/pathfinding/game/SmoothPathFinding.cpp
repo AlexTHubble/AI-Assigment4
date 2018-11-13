@@ -25,5 +25,7 @@ Path * SmoothPathFinding::FindPath(Node * pFrom, Node * pTo)
 	//Smooth path
 	pPath = pathSmoothing->SmoothPath(mpGraph, pPath);
 	//Return Smooth Path
+
+	delete pathSmoothing;
 	return pPath;
 }
