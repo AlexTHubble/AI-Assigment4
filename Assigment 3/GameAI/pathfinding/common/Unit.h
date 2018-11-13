@@ -9,6 +9,7 @@
 #include "PositionComponent.h"
 #include "Sprite.h"
 #include "Steering.h"
+
 //#include "CircularQueue.h"
 //#include "Transaction.h"
 //#include "TransactionProcessor.h"
@@ -17,6 +18,7 @@ class PhysicsComponent;
 class SteeringComponent;
 class Sprite;
 class UnitManager;
+class Path;
 
 const Uint32 DEFAULT_QUEUE_CAPACITY = 8;
 
@@ -37,9 +39,12 @@ public:
 	float getMaxRotAcc() const { return mMaxRotAcc; };
 	float getMaxRotVel() const { return mMaxRotVel; };
 	void setShowTarget(bool val) { mShowTarget = val; };
+	void setPath(Path* path) { mPath = path; };
+	void setToUpdateTarget() { ShouldUpdateTarget = true; };
 	UnitID getID() { return mID; };
 
 	void setSteering(Steering::SteeringType type, Vector2D targetLoc, UnitID targetUnitID);
+	void updateTarget();
 
 private:
 	UnitID mID;
@@ -53,6 +58,10 @@ private:
 	float mMaxRotAcc;
 	float mMaxRotVel;
 	bool mShowTarget;
+
+	Path* mPath;
+	bool ShouldUpdateTarget;
+	int mCurrentNode;
 
 	Unit(const Sprite& sprite);
 	virtual ~Unit();
