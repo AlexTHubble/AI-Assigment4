@@ -171,6 +171,9 @@
     <ClInclude Include="..\common\SeekSteering.h">
       <Filter>Common\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="EndGameMessage.h">
+      <Filter>Header Files\Messages</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common\Game.cpp">
@@ -301,6 +304,9 @@
     </ClCompile>
     <ClCompile Include="..\common\SeekSteering.cpp">
       <Filter>Common\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EndGameMessage.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
