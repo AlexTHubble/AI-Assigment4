@@ -16,6 +16,7 @@ PathToMessage::PathToMessage( const Vector2D& from, const Vector2D& to )
 
 PathToMessage::~PathToMessage()
 {
+	delete smoothPath;
 }
 
 void PathToMessage::process()
@@ -36,17 +37,17 @@ void PathToMessage::process()
 				GridPathfinder* pPathfinder = pGame->getPathfinder();
 				GridGraph* pGridGraph = pGame->getGridGraph();
 				Grid* pGrid = pGame->getGrid();
-				int fromIndex = pGrid->getSquareIndexFromPixelXY((int)mFrom.getX(), (int)mFrom.getY());
+				//int fromIndex = pGrid->getSquareIndexFromPixelXY((int)mFrom.getX(), (int)mFrom.getY());
+				int fromIndex = pGrid->getSquareIndexFromPixelXY(it->second->getPositionComponent()->getPosition().getX(), it->second->getPositionComponent()->getPosition().getY());
 				int toIndex = pGrid->getSquareIndexFromPixelXY((int)mTo.getX(), (int)mTo.getY());
 				Node* pToNode = pGridGraph->getNode(toIndex);
 
 				//Path
 				Path* pPath;
 				//Get From Node
-				Node* pFromNode = pGridGraph->getNode(pGrid->getSquareIndexFromPixelXY(it->second->getPositionComponent()->getPosition().getX(), 
-					                                                                   it->second->getPositionComponent()->getPosition().getY()));
+				Node* pFromNode = pGridGraph->getNode(fromIndex);
 				//SmoothPath
-				SmoothPathFinding* smoothPath = new SmoothPathFinding(pGridGraph);
+				smoothPath = new SmoothPathFinding(pGridGraph);
 				pPath = smoothPath->FindPath(pFromNode, pToNode);
 				//Dijsktra* path = new Dijsktra(pGridGraph, true);
 				//pPath = path->findPath(pFromNode, pToNode);
@@ -57,7 +58,7 @@ void PathToMessage::process()
 				it->second->setPath(pPath);
 				it->second->setToUpdateTarget();
 
-				delete smoothPath;
+				
 			}
 		}
 	}

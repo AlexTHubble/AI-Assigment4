@@ -28,7 +28,6 @@ public:
 	int Orientation(Vector2D p, Vector2D q, Vector2D r);
 
 private:
-	std::vector<Node*> wallBlocks;
 };
 
 #endif // !PATH_SMOOTHING_H

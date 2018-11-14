@@ -58,6 +58,8 @@ void Path::outputMapToConsole()
 	{
 		cout << node->getId() << endl;
 	}
+
+	cout << "DONE OUTPUTING PATH" << endl;
 }
 
 bool Path::containsNode( Node* pNode )
