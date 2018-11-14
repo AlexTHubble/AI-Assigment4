@@ -16,11 +16,13 @@ PathToMessage::PathToMessage( const Vector2D& from, const Vector2D& to )
 
 PathToMessage::~PathToMessage()
 {
+	delete pPath;
 	delete smoothPath;
 }
 
 void PathToMessage::process()
 {
+	
 	GameApp* pGame = dynamic_cast<GameApp*>(gpGame);
 	if( pGame != NULL ) 
 	{
@@ -34,7 +36,8 @@ void PathToMessage::process()
 			//Loop through all unit in Unitmanager
 			for (it = unitMap.begin(); it!= unitMap.end(); ++it)
 			{
-				GridPathfinder* pPathfinder = pGame->getPathfinder();
+				it->second->setToUpdateTarget(true);
+
 				GridGraph* pGridGraph = pGame->getGridGraph();
 				Grid* pGrid = pGame->getGrid();
 				//int fromIndex = pGrid->getSquareIndexFromPixelXY((int)mFrom.getX(), (int)mFrom.getY());
@@ -43,7 +46,7 @@ void PathToMessage::process()
 				Node* pToNode = pGridGraph->getNode(toIndex);
 
 				//Path
-				Path* pPath;
+				
 				//Get From Node
 				Node* pFromNode = pGridGraph->getNode(fromIndex);
 				//SmoothPath
@@ -56,10 +59,13 @@ void PathToMessage::process()
 				pPath->outputMapToConsole();
 
 				it->second->setPath(pPath);
-				it->second->setToUpdateTarget();
-
+				it->second->setToUpdateTarget(true);
+				
+				delete pPath;
+				delete smoothPath;
 				
 			}
 		}
 	}
+
 }

@@ -86,6 +86,7 @@ bool Game::init()
 
 void Game::cleanup()
 {
+
 	//delete the timers
 	delete mpLoopTimer;
 	mpLoopTimer = NULL;

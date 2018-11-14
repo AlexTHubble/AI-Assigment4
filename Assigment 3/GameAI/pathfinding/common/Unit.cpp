@@ -25,10 +25,12 @@ Unit::Unit(const Sprite& sprite)
 {
 	mCurrentNode = 0;
 	ShouldUpdateTarget = false;
+	mPath = nullptr;
 }
 
 Unit::~Unit()
 {
+	resetPath();
 }
 
 void Unit::draw() const
@@ -78,7 +80,22 @@ SteeringComponent* Unit::getSteeringComponent() const
 
 void Unit::setPath(Path * path)
 {
-	mPath = path;
+	resetPath();
+	mPath = new Path;
+
+	for (int i = 0; i < path->getNumNodes(); i++)
+	{
+		Node* tempNode = path->peekNode(i);
+		mPath->addNode(tempNode);
+	}
+	
+}
+
+void Unit::resetPath()
+{
+	mCurrentNode = 0;
+	delete mPath;
+	mPath = nullptr;
 }
 
 void Unit::setSteering(Steering::SteeringType type, Vector2D targetLoc, UnitID targetUnitID)
@@ -94,6 +111,7 @@ void Unit::updateTarget()
 {
 	if (mPath != nullptr)
 	{
+		
 		if (ShouldUpdateTarget)
 		{
 			if (mCurrentNode < mPath->getNumNodes())
@@ -102,10 +120,12 @@ void Unit::updateTarget()
 				GameApp* pGame = dynamic_cast<GameApp*>(gpGame);
 				cout << mPath->peekNode(mPath->getNumNodes() - (mCurrentNode + 1))->getId() << endl;
 				setSteering(Steering::ARRIVEANDFACE, pGame->getGrid()->getULCornerOfSquare(mPath->peekNode(mPath->getNumNodes() - (mCurrentNode + 1))->getId()), INVALID_UNIT_ID);
-				//
+				
 			}
 			ShouldUpdateTarget = false;
 			mCurrentNode++;
 		}
+
+
 	}
 }

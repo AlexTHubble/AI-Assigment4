@@ -6,12 +6,10 @@
 SmoothPathFinding::SmoothPathFinding(Graph * pGraph)
 	:Dijsktra(dynamic_cast<GridGraph*>(pGraph), true)
 {
-
 }
 
 SmoothPathFinding::~SmoothPathFinding()
 {
-
 }
 
 Path * SmoothPathFinding::FindPath(Node * pFrom, Node * pTo)

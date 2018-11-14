@@ -68,7 +68,7 @@ Steering* Arrive::getSteering()
 		break;
 	case Steering::STOP:
 		targetSpeed = 0;
-		
+
 		break;
 	default:
 		return this;
@@ -103,7 +103,7 @@ void Arrive::testForArrival(float distance)
 	{
 		mType = Steering::STOP;
 		Unit* pOwner = gpGame->getUnitManager()->getUnit(mOwnerID);
-		pOwner->setToUpdateTarget();
+		pOwner->setToUpdateTarget(true);
 		return;
 	}	
 	if (distance > mSlowRadius) //Outside radius

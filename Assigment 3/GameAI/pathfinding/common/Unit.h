@@ -43,7 +43,8 @@ public:
 	float getMaxRotVel() const { return mMaxRotVel; };
 	void setShowTarget(bool val) { mShowTarget = val; };
 	void setPath(Path* path);
-	void setToUpdateTarget() { ShouldUpdateTarget = true; };
+	void setToUpdateTarget(bool update) { ShouldUpdateTarget = update; };
+	void resetPath();
 	UnitID getID() { return mID; };
 
 	void setSteering(Steering::SteeringType type, Vector2D targetLoc, UnitID targetUnitID);

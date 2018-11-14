@@ -5,6 +5,7 @@
 #include "Vector2D.h"
 
 class SmoothPathFinding;
+class Path;
 
 class PathToMessage : public GameMessage
 {
@@ -21,6 +22,7 @@ private:
 	Vector2D mFrom;
 	Vector2D mTo;
 	SmoothPathFinding* smoothPath;
+	Path* pPath;
 };
 
 #endif // !PATH_TO_MESSAGE_H
