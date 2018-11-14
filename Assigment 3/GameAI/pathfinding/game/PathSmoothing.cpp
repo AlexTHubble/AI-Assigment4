@@ -26,7 +26,6 @@ Path* PathSmoothing::SmoothPath(Graph * pGraph, Path * pPath)
 	//We start at 3rd nos in cause we assum first two nodes are adjacent
 	//and will pass the Raycast
 	int pathIndex = 2;
-	int currentNode = 0;
 	//Add first node to path
 	smoothPath->addNode(pPath->peekNode(0));
 
@@ -35,16 +34,14 @@ Path* PathSmoothing::SmoothPath(Graph * pGraph, Path * pPath)
 	{
 		//Do Raycast
 		//If it doesn't pass
-		if (!RaycastToTarget(pPath->peekNode(pathIndex), pPath->peekNode(currentNode)))
+		if (!RaycastToTarget(smoothPath->peekNode(smoothPath->getNumNodes() - 1), pPath->peekNode(pathIndex)))
 		{
 			//If Raycast does not clear, add the last node that
 			//passed to the output list
-			smoothPath->addNode(pPath->peekNode(currentNode - 1));
-			//Increment to next node
-			pathIndex++;
+			smoothPath->addNode(pPath->peekNode(pathIndex - 1));
 		}
 		//Increment pathIndex
-		currentNode++;
+		pathIndex++;
 	}	
 	//We've reached the end of the path list, ass the
 	//end node to the output and return it

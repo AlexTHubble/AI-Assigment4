@@ -38,6 +38,7 @@ void PathToMessage::process()
 				Grid* pGrid = pGame->getGrid();
 				int fromIndex = pGrid->getSquareIndexFromPixelXY((int)mFrom.getX(), (int)mFrom.getY());
 				int toIndex = pGrid->getSquareIndexFromPixelXY((int)mTo.getX(), (int)mTo.getY());
+				int fromIndex = pGrid->getSquareIndexFromPixelXY(it->second->getPositionComponent()->getPosition().getX(), it->second->getPositionComponent()->getPosition().getY());
 				Node* pToNode = pGridGraph->getNode(toIndex);
 				Node* pFromNode = pGridGraph->getNode(fromIndex);
 				//Path
