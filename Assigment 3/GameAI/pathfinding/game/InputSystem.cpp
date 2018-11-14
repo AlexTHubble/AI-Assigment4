@@ -1,5 +1,7 @@
 #include "InputSystem.h"
 #include "GameApp.h"
+#include "Unit.h"
+#include "UnitManager.h"
 
 InputSystem::InputSystem(SpriteManager* spriteManager, UnitManager* unitManager, IDType aiSpriteID)
 {
@@ -67,14 +69,15 @@ void InputSystem::update()
 
 		if (state[SDL_SCANCODE_S])
 		{
-			GameMessage* pMessage = new SpawnRandomEnemyMessage(mpUnitManager, mpSpriteManager, mAiSpriteID, 1);
+			GameMessage* pMessage = new SpawnRandomEnemyMessage(mpUnitManager, mpSpriteManager, mAiSpriteID, 10);
 			mpMessageManager->addMessage(pMessage, 0);
 		}
 
 		//if escape key was down then exit the loop
 		if (state[SDL_SCANCODE_ESCAPE])
 		{
-			gpGame->markForExit();
+			GameMessage* pMessage = new EndGameMessage();
+			mpMessageManager->addMessage(pMessage, 0);
 		}
 	}
 

@@ -105,6 +105,8 @@ void Game::cleanup()
 	mpGraphicsBufferManager = NULL;
 	delete mpSpriteManager;
 	mpSpriteManager = NULL;
+
+	mpUnitManager->cleanup();
 	delete mpUnitManager;
 	mpUnitManager = NULL;
 	delete mpComponentManager;

@@ -27,7 +27,7 @@ const Uint32 DEFAULT_QUEUE_CAPACITY = 8;
 class Unit : public Trackable
 {
 public:
-	~Unit();
+	virtual ~Unit();
 
 	void draw() const;
 	float getFacing() const;

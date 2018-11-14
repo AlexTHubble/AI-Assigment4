@@ -30,7 +30,8 @@ Unit::Unit(const Sprite& sprite)
 
 Unit::~Unit()
 {
-	resetPath();
+	delete mPath;
+	mPath = nullptr;
 }
 
 void Unit::draw() const
@@ -118,7 +119,6 @@ void Unit::updateTarget()
 			{
 				//Set Steering
 				GameApp* pGame = dynamic_cast<GameApp*>(gpGame);
-				cout << mPath->peekNode(mPath->getNumNodes() - (mCurrentNode + 1))->getId() << endl;
 				setSteering(Steering::ARRIVEANDFACE, pGame->getGrid()->getULCornerOfSquare(mPath->peekNode(mPath->getNumNodes() - (mCurrentNode + 1))->getId()), INVALID_UNIT_ID);
 				
 			}

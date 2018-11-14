@@ -1,4 +1,5 @@
-#pragma once
+#ifndef SPAWN_RANDOM_ENEMY_MESSAGE_H
+#define SPAWN_RANDOM_ENEMY_MESSAGE_H
 
 #include "GameMessage.h"
 //#include "Vector2D.h"
@@ -19,3 +20,5 @@ private:
 	IDType mAiSpriteId;
 	int mNumberToSpawn = 1;
 };
+
+#endif // !SPAWN_RANDOM_ENEMY_MESSAGE_H

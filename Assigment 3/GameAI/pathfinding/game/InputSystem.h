@@ -11,6 +11,7 @@
 #include "PathToMessage.h"
 #include "Game.h"
 #include "SpawnRandomEnemyMessage.h"
+#include "EndGameMessage.h"
 
 class InputSystem : public Trackable
 {

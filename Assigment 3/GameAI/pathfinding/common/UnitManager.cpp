@@ -21,6 +21,11 @@ UnitManager::UnitManager(Uint32 maxSize)
 
 void UnitManager::cleanup()
 {
+
+	for (std::map<UnitID, Unit*>::iterator unit = mUnitMap.begin(); unit != mUnitMap.end(); ++unit)
+	{
+		deleteUnit(unit->second->getID());
+	}
 }
 
 Unit* UnitManager::createUnit(const Sprite& sprite, bool shouldWrap, const PositionData& posData /*= ZERO_POSITION_DATA*/, const PhysicsData& physicsData /*= ZERO_PHYSICS_DATA*/, const UnitID& id)
